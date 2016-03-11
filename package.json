@@ -1,0 +1,40 @@
+{
+  "name": "Thumbroll",
+  "version": "1.0.0",
+  "description": "A real-time student feedback and analytics platform",
+  "author": "Shane McGraw <shanemcgraw17@gmail.com>, Ian Deboisblanc, Jake Pace, Jacob Lee",
+  "main": "server.js",
+  "scripts": {
+    "start": "node_modules/.bin/nodemon server/app.js",
+    "test": "node_modules/.bin/mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/absurdSquid/thumbroll.git"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-sessions": "^1.0.5",
+    "mocha": "^2.4.5",
+    "node-gyp": "^3.3.1",
+    "nodemon": "^1.9.1",
+    "react": "^0.14.7",
+    "redux": "^3.3.1",
+    "sequelize": "^3.19.3",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^5.0.0",
+    "chai": "^3.5.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^4.1.0",
+    "eslint-plugin-react-native": "^1.0.0",
+    "grunt-nodemon": "^0.4.1",
+    "mocha": "^2.4.5",
+    "should": "^8.2.2",
+    "supertest": "^1.2.0"
+  }
+}

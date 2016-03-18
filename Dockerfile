@@ -1,9 +1,11 @@
 FROM node
 RUN mkdir /app
-ADD . /app
+RUN mkdir /app/server
+ADD server/. /app/server
+ADD package.json /app
+ADD Dockerfile /app
 WORKDIR /app
 RUN npm install
 
-EXPOSE 8000
+EXPOSE 3000
 CMD ["npm", "start"]
-

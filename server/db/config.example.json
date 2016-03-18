@@ -1,0 +1,18 @@
+{
+  "production":{
+    "username":"postgresdb",
+    "password":"",
+    "database":"thumbroll",
+    "host":"postgres",
+    "dialect":"postgres",
+    "port":"5432"
+  },
+  "development":{
+    "username":"<<postgres username here>>",
+    "password":"",
+    "database":"thumbroll",
+    "host":"localhost",
+    "dialect":"postgres",
+    "port":"5432"
+  }
+}

@@ -1,12 +1,12 @@
 version: '2'
 services:
-  web:
+  thumbroll-server:
     build: .
     ports:
-     - "8000:8000"
-
+     - "3000:3000"
   postgres:
     image: postgres
-
-  node:
-    image: node
+    environment:
+      POSTGRES_PASSWORD: ""
+      POSTGRES_USER: "postgresdb"
+      POSTGRES_DB: "thumbroll"

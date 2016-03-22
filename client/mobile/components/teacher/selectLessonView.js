@@ -1,6 +1,8 @@
 var React = require('react-native');
 var RequestFeedbackView = require('./requestFeedbackView');
 var api = require('./../../utils/api');
+var NavBar = require('./../shared/navbar');
+var Button = require('./../shared/button');
 
 var {
   View,
@@ -55,31 +57,27 @@ class SelectLessonView extends React.Component {
   renderLessons(lessons) {
     return lessons.map((lesson, index) => {
       return (
-        <View style={styles.buttonContainer} key={index}>
-          <TouchableOpacity onPress={this.selectLesson.bind(this, lesson.id)} style={styles.button}>
-            <Text style={styles.buttonText}> {lesson.name} </Text>
-          </TouchableOpacity>
-        </View>
+        <Button key={index} onPress={this.selectLesson.bind(this, lesson.id)} style={styles.button} text={lesson.name} />
       )
     })
+  }
+
+  previousSection() {
+    this.props.navigator.pop();
   }
 
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#ededed'}}> 
+        <View>
+          <NavBar navi={this.props.navigator} onBack={this.previousSection.bind(this)}>Your Lessons</NavBar>
+        </View>
         <View style={styles.viewContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.pageText}> Your Lessons </Text>
-          </View>
           <ScrollView>
             <View style={styles.buttonsContainer}>
               {this.renderLessons(this.state.lessons)}
+              <Button onPress={this.addLesson.bind(this)} style={styles.button} text={'Add Lesson'} />
             </View>
-
-            <TouchableOpacity  onPress={this.addLesson.bind(this)} style={styles.button}>
-              <Text style={styles.buttonText}> Add Lesson </Text>
-            </TouchableOpacity>
-
           </ScrollView>
         </View>
       </View>

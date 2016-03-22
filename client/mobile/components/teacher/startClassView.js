@@ -2,6 +2,8 @@ var React = require('react-native');
 var SelectLessonView = require('./selectLessonView');
 var RequestFeedbackView = require('./requestFeedbackView');
 var api = require('./../../utils/api');
+var NavBar = require('./../shared/navbar');
+var Button = require('./../shared/button');
 require('./../../utils/userAgent');
 var io =require('socket.io-client/socket.io');
 var env = require('./../../utils/environment');
@@ -98,31 +100,27 @@ class StartClassView extends React.Component {
   renderClasses(classes) {
     return classes.map((cls, index) => {
       return (
-        <View style={styles.buttonContainer} key={index}>
-          <TouchableOpacity onPress={this.selectClass.bind(this, cls.id)} style={styles.button}>
-            <Text style={styles.buttonText}> {cls.name} </Text>
-          </TouchableOpacity>
-        </View>
+        <Button onPress={this.selectClass.bind(this, cls.id)} style={styles.button} text={cls.name} key={index  }/>
       )
     })
   }
 
+  previousSection() {
+    this.props.navigator.pop();
+  }
+
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#ededed'}}> 
-        <View style={styles.viewContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.pageText}> Your classes </Text>
-          </View>
-          <ScrollView>
-            <View style={styles.buttonsContainer}>
-              <TouchableOpacity onPress={this.selectQuickClass.bind(this)} style={styles.button}>
-                <Text style={styles.buttonText}> Start Quick Class </Text>
-              </TouchableOpacity>
-            </View>
-              {this.renderClasses(this.state.classes)}
-          </ScrollView>
+      <View style={{flex: 1}}> 
+        <View>
+          <NavBar navi={this.props.navigator} onBack={this.previousSection.bind(this)}>Your Classes</NavBar>
         </View>
+            <ScrollView>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Button onPress={this.selectQuickClass.bind(this)} text={'Start Quick Class'} />
+              {this.renderClasses(this.state.classes)}
+            </View>
+            </ScrollView>
         <Modal visible={this.state.modalVisible} transparent={true} animated={true}>
           <View style={styles.modal}>
             <View style={{height:this.state.height * 0.6, width:this.state.width * 0.8}}>
@@ -152,6 +150,9 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   buttonsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20
   },
   buttonContainer: {

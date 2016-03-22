@@ -1,6 +1,8 @@
 var React = require('react-native');
 var FeedbackView = require('./display_feedback/feedbackView');
 var api = require('./../../utils/api');
+var NavBar = require('./../shared/navbar');
+var Button = require('./../shared/button');
 
 var {
   View,
@@ -66,14 +68,14 @@ class RequestFeedbackView extends React.Component {
 
   renderFeedbackOptions(feedbackOptions) {
     return feedbackOptions.map((feedbackOption, index) => {
-      return (
-        <View style={styles.buttonContainer} key={index}>
-          <TouchableOpacity onPress={this.selectFeebackOption.bind(this, feedbackOption)} style={styles.button}>
-            <Text style={styles.buttonText}> {feedbackOption.name} </Text>
-          </TouchableOpacity>
-        </View>
+      return (      
+        <Button key={index} onPress={this.selectFeebackOption.bind(this, feedbackOption)} style={styles.button} text={feedbackOption.name} />
       )
     })
+  }
+
+  previousSection() {
+    this.props.navigator.pop();
   }
 
   render() {
@@ -81,18 +83,12 @@ class RequestFeedbackView extends React.Component {
 
     return (
       <View style={{flex: 1, backgroundColor: '#ededed'}}> 
-        <View style={styles.viewContainer}>
-        <View style={styles.dismissContainer}>
-          <TouchableOpacity onPress={this.dismissClass.bind(this)} style={styles.dismissButton}>
-            <Text style={styles.dismissText}> Dismiss Class </Text>
-          </TouchableOpacity>
+        <View>
+          <NavBar navi={this.props.navigator} onBack={this.previousSection.bind(this)}>Request Feedback</NavBar>
         </View>
-          <View style={styles.titleContainer}>
-            <Text style={styles.pageText}> Request Feedback: </Text>
-          </View>
-          <View style={styles.buttonsContainer}>
-            {this.renderFeedbackOptions(this.state.feedbackOptions)}
-          </View>
+        <View style={styles.viewContainer}>
+          <Button onPress={this.dismissClass.bind(this)} style={styles.dismissButton} text={'Dismiss Class'}/>
+          {this.renderFeedbackOptions(this.state.feedbackOptions)}
         </View>
       </View>
     )

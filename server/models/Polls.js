@@ -12,17 +12,15 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    name: DataTypes.STRING, 
     type: DataTypes.ENUM('thumbs', 'multiChoice'),
-    preset_data: DataTypes.STRING
+    answer: DataTypes.STRING, 
+    preset_data: DataTypes.JSON,
+    sent: DataTypes.BOOLEAN
   }, {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        polls.belongsTo(models.teachers, {
-          foreignKey: 'teacher_id',
-          onDelete: 'set null',
-          onUpdate: 'cascade'
-        }); 
         polls.belongsTo(models.lessons, {
           foreignKey: 'lesson_id',
           onDelete: 'set null',

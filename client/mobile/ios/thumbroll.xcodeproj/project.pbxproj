@@ -23,6 +23,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		EEB43B21FC6E488A82BEBC20 /* libRNChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C880E63348A94589B8F4B4EB /* libRNChart.a */; };
+		F668CA5E1CA0BE56006F0BC4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F668CA521CA0BDFC006F0BC4 /* libART.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,13 @@
 			remoteGlobalIDString = 41FDC4F01AF5D0CF00DBBA9C;
 			remoteInfo = RNChart;
 		};
+		F668CA511CA0BDFC006F0BC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F668CA4D1CA0BDFB006F0BC4 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +144,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		C880E63348A94589B8F4B4EB /* libRNChart.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNChart.a; sourceTree = "<group>"; };
+		F668CA4D1CA0BDFB006F0BC4 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F668CA5E1CA0BE56006F0BC4 /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -273,6 +283,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F668CA4D1CA0BDFB006F0BC4 /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -321,6 +332,14 @@
 			isa = PBXGroup;
 			children = (
 				D5DE98C41C99E74C00126B3F /* libRNChart.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F668CA4E1CA0BDFB006F0BC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F668CA521CA0BDFC006F0BC4 /* libART.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,6 +410,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = F668CA4E1CA0BDFB006F0BC4 /* Products */;
+					ProjectRef = F668CA4D1CA0BDFB006F0BC4 /* ART.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -520,6 +543,13 @@
 			fileType = archive.ar;
 			path = libRNChart.a;
 			remoteRef = D5DE98C31C99E74C00126B3F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F668CA521CA0BDFC006F0BC4 /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = F668CA511CA0BDFC006F0BC4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

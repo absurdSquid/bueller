@@ -1,6 +1,6 @@
 {
   "production":{
-    "username":"postgresdb",
+    "username":"postgres",
     "password":"",
     "database":"thumbroll",
     "host":"postgres",

@@ -1,6 +1,8 @@
 var React = require('react-native');
 var RequestFeedbackView = require('./requestFeedbackView');
 var api = require('./../../utils/api');
+var NavBar = require('./../shared/navbar');
+var Button = require('./../shared/button');
 
 var {
   View,
@@ -16,33 +18,53 @@ class SelectLessonView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //classes: this.props.route.classes
-      lessons: this.props.route.lessons,
+      lessons: [],
       socket: this.props.route.socket,
       classId: this.props.route.classId,
     };
   }
 
+  componentWillMount(){
+    var classId = this.state.classId;
+    var that = this;
+    api.getLessons(classId)
+    .then(function(resp){
+      if(resp.status === 500) {
+        console.error('Error for getting lessons data')
+      } else if(resp.status === 200) {
+        var lessons = JSON.parse(resp._bodyInit);
+        that.setState({
+          lessons: lessons,
+        })
+      }
+    })
+    .catch(function(err){
+      console.error(err);
+    })
+  }
+
   selectLesson(lessonId) {
-    
     this.props.navigator.push({
       component: RequestFeedbackView,
+      classId: this.state.classId,
+      getActiveStudents: this.props.route.getActiveStudents,
       lessonId: lessonId,
       socket: this.state.socket,
       sceneConfig: {
-        ...Navigator.SceneConfigs.FloatFromRight,
+        ...Navigator.SceneConfigs.HorizontalSwipeJump,
         gestures: {}
       }
     });
   }
 
-  addLesson(){
-    api.addLesson()
+  addLesson(classId){
+    api.addLesson(classId)
     .then((response) => {
       if(response.status === 500){
         console.error('err getting from data')
       } else if(response.status === 200){
-        var lessonId = JSON.parse(response._bodyText).lessonId;
+        console.log('lessonId >>>>>>>>>>>>>>>>', response)
+        var lessonId = JSON.parse(response._bodyText).id;
         this.selectLesson(lessonId);
       }
     })
@@ -54,32 +76,36 @@ class SelectLessonView extends React.Component {
   renderLessons(lessons) {
     return lessons.map((lesson, index) => {
       return (
-        <View style={styles.buttonContainer} key={index}>
-          <TouchableOpacity onPress={this.selectLesson.bind(this, lesson.id)} style={styles.button}>
-            <Text style={styles.buttonText}> {lesson.name} </Text>
-          </TouchableOpacity>
-        </View>
+        <Button key={index} onPress={this.selectLesson.bind(this, lesson.id)} style={styles.button} text={lesson.name} />
       )
     })
+  }
+
+  previousSection() {
+    this.state.socket.disconnect();
+    this.props.navigator.pop();
+  }
+
+  beforeLogout() {
+    this.state.socket.emit('teacherLoggingOut');
   }
 
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#ededed'}}> 
+        <NavBar navi={this.props.navigator} onBack={this.previousSection.bind(this)} 
+          beforeLogout={this.beforeLogout.bind(this)}>
+          Your Lessons
+        </NavBar>
         <View style={styles.viewContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.pageText}> Your Lessons </Text>
+          <View>
+            <ScrollView>
+              <View style={styles.buttonsContainer}>
+                {this.renderLessons(this.state.lessons)}
+                <Button onPress={this.addLesson.bind(this, this.state.classId)} style={styles.button} text={'Add Lesson'} />
+              </View>
+            </ScrollView>
           </View>
-          <ScrollView>
-            <View style={styles.buttonsContainer}>
-              {this.renderLessons(this.state.lessons)}
-            </View>
-
-            <TouchableOpacity  onPress={this.addLesson.bind(this)} style={styles.button}>
-              <Text style={styles.buttonText}> Add Lesson </Text>
-            </TouchableOpacity>
-
-          </ScrollView>
         </View>
       </View>
     )
@@ -90,7 +116,7 @@ const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'column',  
     backgroundColor: '#F5FCFF',
   },
   pageText: {

@@ -1,1 +1,0 @@
-studentView.js

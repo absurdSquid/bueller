@@ -1,9 +1,8 @@
 var models = require('../models');
 var sequelize = require('../db/sequelize-connection');
 var bcrypt = require('bcrypt');
-
-// TODO: Remove globalTeacherCode
-var globalTeacherCode = 123;
+var session = require('express-session');
+var utils = require('../utils/utils');
 
 module.exports = {
   login: function(req, res, next) {
@@ -29,6 +28,9 @@ module.exports = {
               // if user is a student, compare stored password with provided password
               bcrypt.compare(password, matchedUser.dataValues.password, function(err, match) {
                 if (match) {
+                  // generate a session on the response object
+                  utils.createSession(req, res, 's_' + matchedUser.dataValues.id);
+
                   // Find all classes student is enrolled in (via student_classes table)
                   // Attach them to response object
                   models.students_classes.findAll({
@@ -40,6 +42,7 @@ module.exports = {
                         uid: matchedUser.dataValues.id,
                         firstName: matchedUser.dataValues.firstname,
                         lastName: matchedUser.dataValues.lastname,
+                        email: matchedUser.dataValues.email,
                         classes: classes
                       }
                     };
@@ -57,6 +60,8 @@ module.exports = {
           // if user is a teacher, compare stored password with provided password
           bcrypt.compare(password, matchedUser.dataValues.password, function(err, match) {
             if (match) {
+              // generate a session on the response object
+              utils.createSession(req, res, 't_' + matchedUser.dataValues.id);
               // pull teacher's classes from db and attach them to response object
               models.classes.findAll({
                 where: {'teacher_id': matchedUser.dataValues.id}
@@ -66,6 +71,7 @@ module.exports = {
                     uid: matchedUser.dataValues.id,
                     firstName: matchedUser.dataValues.firstname,
                     lastName: matchedUser.dataValues.lastname,
+                    email: matchedUser.dataValues.email,
                     classes: classes
                   }
                 };
@@ -86,6 +92,7 @@ module.exports = {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
     var accountType = req.body.accountType;
 
@@ -109,6 +116,7 @@ module.exports = {
                     firstname: firstName,
                     lastname: lastName,
                     username: username,
+                    email: email,
                     password: hash
                   });
                 })
@@ -122,9 +130,13 @@ module.exports = {
                         uid: user.dataValues.id,
                         firstName: user.dataValues.firstname,
                         lastName: user.dataValues.lastname,
+                        email: user.dataValues.email,
                         classes: []
                       }
                     };
+                    // generate a session on the response object
+                    utils.createSession(req, res, 't_' + user.dataValues.id);
+
                     // SUCCESS: Account created -> client redirects to '/teacher'
                     res.status(200).send(teacherObj);
                   });
@@ -133,9 +145,7 @@ module.exports = {
             });
           }
         });
-      }
-      // if no teacher code provided, assume user is student
-      else {
+      } else {
         models.students.findOne({
            where: {'username': username}
          })
@@ -152,6 +162,7 @@ module.exports = {
                     firstname: firstName,
                     lastname: lastName,
                     username: username,
+                    email: email,
                     password: hash
                   });
                 })
@@ -165,9 +176,13 @@ module.exports = {
                         uid: user.dataValues.id,
                         firstName: user.dataValues.firstname,
                         lastName: user.dataValues.lastname,
+                        email: user.dataValues.email,
                         classes: []
                       }
                     };
+                    // generate a session on the response object
+                    utils.createSession(req, res, 's_' + user.dataValues.id);
+
                     // SUCCESS -> client redirects to '/student'
                     res.status(200).send(studentObj);
                   });                  
@@ -178,5 +193,30 @@ module.exports = {
         });
       }
     });
-  }
+  },
+
+  logout: function(req, res, next) {
+    if (req.session) {
+      req.session = null;
+      res.status(200).send("user logged out");
+    } else {
+      console.log("no session to destroy");
+      res.status(400).send("no user to log out");
+    }
+  },
+
+  wildcard: function(req, res, next) {
+    res.redirect('/');
+  },
+
+  checkAuth: function(req, res, next) {
+    // req.session.user = 'ian';
+    if(utils.isLoggedIn(req)) {
+      //Currently can't get session user
+      res.status(200).send({user:req.session.user});
+    }
+    else {
+      res.status(200).send({user:false});
+    }
+  },
 };

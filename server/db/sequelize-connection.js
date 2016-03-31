@@ -2,10 +2,10 @@
 // sequelize connection to postgres database //
 ///////////////////////////////////////////////
 
-var config = require('./config');
-var env = config.production;
+var env       = process.env.NODE_ENV || "development";
+var config    = require('./config.json')[env];
 var Sequelize = require('sequelize');
-var conString = env.dialect+'://'+env.username+':'+env.password+'@'+env.host+':'+env.port+'/'+env.database;
+var conString = config.dialect+'://'+config.username+':'+config.password+'@'+config.host+':'+config.port+'/'+config.database;
 var sequelize = new Sequelize(conString, {
   dialect: 'postgres'
 });

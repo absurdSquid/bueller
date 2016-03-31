@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
+    email: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
@@ -16,11 +17,6 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         teachers.hasMany(models.classes, {
-          foreignKey: 'teacher_id',
-          onDelete: 'set null',
-          onUpdate: 'cascade'
-        }); 
-        teachers.hasMany(models.polls, {
           foreignKey: 'teacher_id',
           onDelete: 'set null',
           onUpdate: 'cascade'

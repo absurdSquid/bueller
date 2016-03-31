@@ -16,7 +16,7 @@ module.exports = {
       });
   },
 
-  signup: (username, password, firstName, lastName, teacherOrStudent) => {
+  signup: (firstName, lastName, username, email, password, teacherOrStudent) => {
     return fetch(server + '/signup', {
         method: 'POST',
         headers: {
@@ -28,6 +28,7 @@ module.exports = {
           firstName: firstName,
           lastName: lastName,
           username: username,
+          email: email,
           password: password,
           accountType: teacherOrStudent
         })
@@ -35,6 +36,7 @@ module.exports = {
   },
 
   addLesson: (classId) => {
+    var lessonName = 'New Lesson ' + new Date().toLocaleDateString();
     return fetch(server + '/teachers/lessons', {
       method: 'POST',
       headers: {
@@ -42,21 +44,38 @@ module.exports = {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        classId: classId
+        classId: classId,
+        lessonName: lessonName,
       })
     }); 
   },
+  
+  getCurrentLesson: (lessonId) => {
+    return fetch(server +'/teachers/lesson/' + lessonId);
+  },
 
+  getStudentClasses: (studentId) => {
+    return fetch(server + '/students/classes/' + studentId);
+  },
+
+  getClasses: (teacherId) => {
+    return fetch(server + '/teachers/classes/' + teacherId)
+  },
 
   getLessons: (classId) => {
-    return fetch(server + '/teachers/lessons/' + classId);
+    return fetch(server + '/teachers/lessons/' + classId)
   },
 
   getLessonData: (lessonId) => {
     return fetch(server + '/teachers/polls/' + lessonId);
   },
+
+  getLessonPolls: (lessonId) => {
+    return fetch(server + '/teachers/polls/' + lessonId);
+  },
   
-  startPoll: (pollObject, lessonId) => {    
+  startPoll: (pollObject, lessonId, classId) => {    
+    var type = pollObject.type;
     return fetch(server + '/teachers/polls', {
       method: 'POST',
       headers: {
@@ -65,7 +84,9 @@ module.exports = {
       },
       body: JSON.stringify({
         pollObject: pollObject,
-        lessonId: lessonId
+        name: 'Default ' + type + ' ' + new Date().toTimeString(),
+        lessonId: lessonId,
+        classId: classId
       })
     });
   }

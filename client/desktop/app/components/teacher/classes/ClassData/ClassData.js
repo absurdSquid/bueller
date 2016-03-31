@@ -660,7 +660,7 @@ class LessonChart extends React.Component {
                   style={this.state.displayAccuracy ? {backgroundColor:'#01579b'} : {backgroundColor:'#fafafa', color: '#424242', cursor:'default'}}>
                   <span className='pointer'>Accuracy</span>
                 </li>
-                <li className='tab col s1 center-align' 
+                <li id='attendanceTab' className='tab col s1 center-align' 
                   onClick={() => {this.setState({displayAccuracy: false, displayThumbs: false, displayAttendance: true})}} 
                   style={{cursor: 'default'}} 
                   style={this.state.displayAttendance ? {backgroundColor:'#01579b'} : {backgroundColor:'#fafafa', color: '#424242', cursor:'default'}}>

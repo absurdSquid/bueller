@@ -227,6 +227,9 @@ button:active .login{
   border: 2px solid #03a9f4;
   border-right: none;
 }
+#attendanceTab {
+  border-left: none;
+}
 
 .tab:active{
   background-color: #bf360c;

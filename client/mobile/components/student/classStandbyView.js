@@ -139,7 +139,7 @@ class ClassStandbyView extends React.Component {
                         autoCorrect={true}
                         style={[styles.userInput, {width:this.state.width * 0.85}]}
                         keyboardType='default'
-                        returnKeyType={'done'}
+                        returnKeyType={'default'}
                         keyboardAppearance='dark'
                         clearTextOnFocus={true}
                         multiline={true}

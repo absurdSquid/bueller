@@ -18,6 +18,7 @@
     "bcrypt": "^0.8.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
+    "chai-http": "^2.0.1",
     "cookie-parser": "^1.4.1",
     "cookie-session": "^2.0.0-alpha.1",
     "css-loader": "^0.23.1",

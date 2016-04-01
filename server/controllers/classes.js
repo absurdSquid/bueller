@@ -62,6 +62,7 @@ module.exports = {
 
   getClassLessonsData: function(req, res, next) {
     var classId = req.params.classId;
+    // Mega-vulnerability
     sequelize.query(
       'SELECT w.lesson_id, w.lesson_name, w.date, w.poll_count, u.potential_correct_responses_count, ' 
       + 'x.response_count, y.correct_response_count, z.average_thumb, v.student_count FROM '
@@ -129,6 +130,7 @@ module.exports = {
 
   getLessonPollsData: function(req, res, next) {
     var lessonId = req.params.lessonId;
+    // Mega-vulnerability
     sequelize.query(
       'SELECT w.poll_id, w.poll_name, w.type, w.sent, w.answer, w.response_count, ' 
       + 'x.student_count, y.correct_response_count, z.average_thumb FROM '
@@ -175,6 +177,7 @@ module.exports = {
 
   getClassStudentsData: function(req, res, next) {
     var classId = req.params.classId;
+    // Mega-vulnerability
     sequelize.query(
       // May want to start queries with classes for less selecting
       'SELECT w.student_id, w.first_name, w.last_name, w.lesson_count, u.potential_response_count, ' 
@@ -246,6 +249,8 @@ module.exports = {
   getStudentPollsData: function(req, res, next) {
     var classId = req.params.classId;
     var studentId = req.params.studentId;
+
+    // Mega-vulnerability
 
     sequelize.query(
       'SELECT b.id AS lesson_id, b.name AS lesson_name, b.date, c.response_val AS student_answer, '

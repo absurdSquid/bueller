@@ -713,7 +713,6 @@ const StudentTable = (props) => {
   )
 }
 
-
 class StudentChart extends React.Component { 
   constructor(props) {
     super(props);
@@ -821,7 +820,6 @@ class StudentChart extends React.Component {
     )
   }
 }
-
 
 ClassData.contextTypes = {
   router: React.PropTypes.any.isRequired

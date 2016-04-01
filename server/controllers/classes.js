@@ -103,7 +103,7 @@ module.exports = {
         + 'COUNT(distinct c.student_id) AS student_count ' 
         + 'FROM lessons a '
         + 'LEFT JOIN polls b ON b.lesson_id = a.id '
-        + 'LEFT JOIN poll_responses c ON c.poll_id = b.id '
+        + 'JOIN poll_responses c ON c.poll_id = b.id '
         + 'WHERE a.class_id = ' + classId + ' '
         + 'GROUP BY a.id) v '
       + 'ON w.lesson_id = v.lesson_id LEFT JOIN'

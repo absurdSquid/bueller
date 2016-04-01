@@ -140,20 +140,20 @@ const styles = StyleSheet.create({
   responseStatContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fafafa',
     marginLeft: 115
   },
   viewContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fafafa',
   },
   pageText: {
     fontSize: 20
   },
   chartContainer: {
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#fafafa'
   }
 });
 

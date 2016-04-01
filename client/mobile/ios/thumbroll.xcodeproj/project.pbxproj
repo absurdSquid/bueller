@@ -22,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		D59BC4A11CADE649007BC5BB /* ThumbRoll Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D59BC4A01CADE649007BC5BB /* ThumbRoll Logo.png */; };
 		EEB43B21FC6E488A82BEBC20 /* libRNChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C880E63348A94589B8F4B4EB /* libRNChart.a */; };
 		F668CA5E1CA0BE56006F0BC4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F668CA521CA0BDFC006F0BC4 /* libART.a */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		C880E63348A94589B8F4B4EB /* libRNChart.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNChart.a; sourceTree = "<group>"; };
+		D59BC4A01CADE649007BC5BB /* ThumbRoll Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ThumbRoll Logo.png"; path = "../image/ThumbRoll Logo.png"; sourceTree = "<group>"; };
 		F668CA4D1CA0BDFB006F0BC4 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 		13B07FAE1A68108700A75B9A /* thumbroll */ = {
 			isa = PBXGroup;
 			children = (
+				D59BC4A01CADE649007BC5BB /* ThumbRoll Logo.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -566,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59BC4A11CADE649007BC5BB /* ThumbRoll Logo.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

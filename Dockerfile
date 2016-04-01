@@ -1,7 +1,7 @@
 
 
 FROM node
-CMD ["npm install -g webpack"]
+RUN npm install -g webpack
 RUN mkdir /app
 RUN mkdir /app/server
 RUN mkdir /app/client
@@ -11,12 +11,12 @@ ADD client/desktop/. /app/client/desktop
 ADD package.json /app
 ADD Dockerfile /app
 
-WORKDIR /app/client/desktop
-CMD ["webpack"]
-
 WORKDIR /app
 RUN npm install
 
+WORKDIR /app/client/desktop
+RUN webpack
 
-EXPOSE 3000
+WORKDIR /app
+EXPOSE 80
 CMD ["npm", "start"]

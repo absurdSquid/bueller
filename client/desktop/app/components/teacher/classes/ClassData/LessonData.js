@@ -384,14 +384,17 @@ const AddThumbsForm = (props) => {
         <form onSubmit={props.addStudent} className="pollForm">
           <div>
           
-            <input type='text' className='newPollInput' placeholder='Title (for your records) - Required' value={props.thumbsTitle} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Title (for your records)' 
+            maxLength={24} value={props.thumbsTitle} onChange={(event) => {
               props.handleThumbsTitleChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
-            <input type='text' className='newPollInput' placeholder='Question - Required' value={props.thumbsQuestion} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Question' value={props.thumbsQuestion} onChange={(event) => {
              props.handleThumbsQuestionChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
             <button onClick={props.onSubmit} style={{marginLeft:'0', fontSize: '1em'}} type='submit'>Add</button>
@@ -413,29 +416,35 @@ const AddMultiChoiceForm = (props) => {
         <h5 className='sectionHeading' >New Multiple Choice</h5>
         <form onSubmit={props.handleMultiChoiceFormSubmit} className="pollForm">
           <div>
-            <input type='text' className='newPollInput' placeholder='Short title (for your records) - Required' value={props.multiTitle} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Short title (for your records)' 
+            value={props.multiTitle} maxLength={24} onChange={(event) => {
               props.handleMultiTitleChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
-            <input type='text' className='newPollInput' placeholder='Question - Required' value={props.multiQuestion} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Question' value={props.multiQuestion} onChange={(event) => {
               props.handleMultiQuestionChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
-            <input type='text' className='newPollInput' placeholder='Answer (A, B, C, or D) - Required' value={props.multiAnswer} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Answer (A, B, C, or D)' value={props.multiAnswer} onChange={(event) => {
               props.handleMultiAnswerChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
-            <input type='text' className='newPollInput' placeholder='Option A - Required' value={props.multiA} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Option A' value={props.multiA} onChange={(event) => {
               props.handleMultiAChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
-            <input type='text' className='newPollInput' placeholder='Option B - Required' value={props.multiB} onChange={(event) => {
+            <input type='text' className='newPollInput' placeholder='Option B' value={props.multiB} onChange={(event) => {
               props.handleMultiBChange(event);
             }} />
+            <text>*</text>
           </div>
           <div>
             <input type='text' className='newPollInput' placeholder='Option C' value={props.multiC} onChange={(event) => {

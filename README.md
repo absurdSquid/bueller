@@ -1,4 +1,5 @@
 # Thumbroll
+![super agent](/media/logo.png)
 
 Thumbroll is a teaching assisstant designed to provide real-time two directional feedback between the lecturer and students via a user-friendly iPhone app. With the press of a button, lecturers can send a variety of polls and feedback requests directly to students. Create or join a 'Quick Class' without logging in, or use the partner desktop app to manage classes and lessons, and track student comprehension easily over time.
 
@@ -15,21 +16,20 @@ Thumbroll is a teaching assisstant designed to provide real-time two directional
 
 Create a file called 'config.json' within /server/db directory by copying 'config.example.json'. This file is used by the server to connect to a postgres DB depending on the run environment. You may need to edit the username and password parameters to run locally (see below).
 
-Thumbroll is setup to be developed and run either locally, or on a local or deployed docker-machine. Running the app via Docker will ensure a consistent environment across computers, and is therefore recommended. 
-
+Thumbroll is setup to be developed and run either locally, or on a local or deployed docker-machine. Running the app via Docker will ensure a consistent environment across computers and is therefore recommended. 
 
 #### Docker
 
-Docker provides a means of packaging applications and their relevant dependencies into blank 'containers' to ensure consistency between development and production environments. Thumbroll requires two containers, one to host the Node server, and one to host the Postgres database. 
+Docker provides a means of packaging applications and their relevant dependencies into blank Linux 'containers' to ensure consistency between development and production environments. Thumbroll requires two containers, one to host the Node server, and one to host the Postgres database. 
 
 Starting up the server is a two-step process:
 
-1. Build an image of your app and any dependencies
+1. Build an image of the app and any dependencies
 2. Start up containers based on the images
 
 These steps correspond to two files in the root directory:
 
-* 'Dockerfile' provides instructions for how to build the image and install dependencies
+* 'Dockerfile' provides instructions for how to build the app image and install dependencies
 * 'docker-compose.yml' provides instructions to setup the environment and run the containers
 
 Use the following instructions to run the Thumbroll server via docker:
@@ -45,7 +45,7 @@ __Step 2: Select docker-machine__
 $ docker-machine ls
 ```
 
-The machine marked with an asterix is currently active
+The machine marked with an asterix is currently active. To select a docker-machine, run
 
 ```
 $ eval $(docker-machine env [name of docker-machine]))
@@ -53,13 +53,23 @@ $ eval $(docker-machine env [name of docker-machine]))
 
 __Step 3: Compose containers__
 
+The docker yml file will instruct the docker-machine on how to build the thumbroll image, run the container,
+and connect it to a postgres container. Run the following in the command line to compose the containers and
+run the node and postgres processes in the background
+
 ```
 $ docker-compose up -d
 ```
 
+To see all running containers on the machine, run the command
+
 ```
-$ docker ps -a
+$ docker ps
 ```
+
+Use the '-a' flag to view all containers, as opposed to just those which are running.
+
+To see the most recent logs from a container process, run
 
 ```
 $ docker logs [container ID]
@@ -101,7 +111,7 @@ To remove an image:
 $ docker rmi [imageID]
 ```
 
-__Step X: Deploy to Digital Ocean (optional)__
+__Step 6: Deploy to Digital Ocean (optional)__
 
 Digital Ocean provides an easy way to deploy your Docker containers directly from your terminal. [Click here for instructions.](https://docs.docker.com/machine/drivers/digital-ocean/)
 
@@ -142,14 +152,26 @@ __Step 5: Install dependencies__
 ```
 $ npm install
 ```
+__Step 6: Install Webpack__ 
 
-__Step 5: Startup Node server__ 
+```
+$ npm install -g webpack
+```
+
+__Step 7: Run Webpack from desktop directory__ 
+
+```
+$ cd client/desktop
+$ webpack --watch
+```
+
+__Step 8: Startup Node server__ 
 
 ```
 $ npm start
 ```
 
-__Step 5: Access DB (optional)__
+__Step 9: Access DB (optional)__
 
 Use the following command to access the thumbroll DB and query it directly:
 
@@ -160,6 +182,8 @@ $ psql thumbroll
 Note that semicolons are required at the end of each query statement.
 
 ## Setup Front-end
+
+#### Mobile
 
 __Step 1: Run 'npm install' from the mobile directory__
 
@@ -186,7 +210,14 @@ In order to run the simulator, navigate to the 'AppDelegate.m' file under the 't
 1. If you want to run the XCode iPhone simulator from a development server (e.g., localhost), uncomment Option 1 and comment-out Option 2. Then, click the play button in the top-left corner (or Command + R).
 2. If you want to run the simulator on a physical iPhone device from a pre-bundled file on disk running on a remote server (e.g., Digital Ocean droplet), comment-out Option 1 and uncomment Option 2. Then, click the play button in the top-left corner (or Command + R).
 
-## Image 
+#### Desktop
+
+__Step 1: Set environment__
+
+The file '/client/desktop/utils/environment.js' is used to set the environment the front-end will use to communicate with the server. Change the key in the export statement to change the environment. See above to get IP address from a docker-machine.
+
+## Icons
 
 Hand by Maico Amorim from the Noun Project
-help by Pham Thi Dieu Linh from the Noun Project
+
+Help by Pham Thi Dieu Linh from the Noun Project

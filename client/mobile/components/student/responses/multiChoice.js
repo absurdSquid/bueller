@@ -72,7 +72,7 @@ class MultiChoice extends React.Component {
     return (
       <View style={{flex:1}}>
         <NavBar navi={this.props.navigator} beforeLogout={this.beforeLogout.bind(this)} onBack={this.onBack.bind(this)}>
-          MultiChoice
+          Multiple Choice
         </NavBar>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#424242' }}>
           <Text style={styles.textSize}>{this.state.questionFromTeacher}</Text>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#fafafa'
   }
 })
 

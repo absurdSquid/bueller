@@ -8,7 +8,8 @@ var {
   TextInput,
   TouchableHighlight,
   Modal,
-  Dimensions
+  Dimensions,
+  ScrollView
 } = React;
 
 
@@ -48,28 +49,30 @@ class StudentQCModal extends React.Component {
   render() {
     return (
       <Modal visible={this.props.visible} transparent={true} animated={true}>
+          <ScrollView scrollEnabled={false}>
         <View style={styles.modal}>
-          <View style={{height:this.state.height * 0.6, width:this.state.width * 0.85}}>
-            <View style={styles.modalBox}>
-              <Text style={styles.modalTextSize}> Enter the secret code: </Text>
-              <View>
-                <TextInput
-                  autoCapitalize={'none'}
-                  autoCorrect={false}
-                  maxLength={4}
-                  style={styles.userInput}
-                  keyboardType='numeric'
-                  value={this.state.secretCode}
-                  returnKeyType={'done'}
-                  onChange={this.handleCodeChange.bind(this)}
-                  onSubmitEditing={this.props.onEnter.bind(null, this.state.secretCode)}
-                />
+            <View style={{height:this.state.height * 0.6, width:this.state.width * 0.85}}>
+              <View style={styles.modalBox}>
+                <Text style={styles.modalTextSize}> Enter the secret code: </Text>
+                <View>
+                  <TextInput
+                    autoCapitalize={'none'}
+                    autoCorrect={false}
+                    maxLength={4}
+                    style={styles.userInput}
+                    keyboardType='numeric'
+                    value={this.state.secretCode}
+                    returnKeyType={'done'}
+                    onChange={this.handleCodeChange.bind(this)}
+                    onSubmitEditing={this.props.onEnter.bind(null, this.state.secretCode)}
+                  />
+                </View>
               </View>
             </View>
-          </View>
           <Button onPress={this.handleEnter.bind(this)} text={'Enter'} />
           <Button onPress={this.handleCancel.bind(this)} text={'Cancel'} />
         </View>
+          </ScrollView>
       </Modal>
     );
   }
@@ -87,7 +90,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#e3f2fd'
+    backgroundColor: '#e3f2fd',
+    marginTop: 50
   },
   userInput: {
     backgroundColor: '#e1f5fe',

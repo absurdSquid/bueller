@@ -23,22 +23,12 @@ app.use(function(req, res, next) {
   next();
 });
   
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Session handling
 app.use(cookieParser('Bueller'));
 app.use(session({secret: 'Bueller'}));
-// app.use(session({
-//   secret: "Bueller",
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//     httpOnly: false,
-//     secure: false
-//   }
-// }));
 
 // Serve bundled index.html
 app.use(express.static(__dirname + '/../client/desktop/dist'));
@@ -54,10 +44,9 @@ models.sequelize.sync({force: true}).then(function () {
   });
 
   // SAMPLE DB INSERTIONS
-
   models.teachers.create({
     firstname: 'Teacher',
-    lastname: 'Example',
+    lastname: 'Test',
     username: 't',
     // t
     password: '$2a$10$l/UC8xusY/ae.2aGtm5iNOHC3m7wzKMNYmVZuU.aWsHpSG.jqpBNm',
@@ -118,6 +107,24 @@ models.sequelize.sync({force: true}).then(function () {
     email: 'orlando@cloudcity.com'
   });
 
+  models.students.create({
+    firstname: 'Max',
+    lastname: 'Kroshka',
+    username: 'Max',
+    // 123
+    password: '$2a$10$cWPLKHIJUX7YRLwJvpMrVeIi0Pxo/IATOPNJ43S2NU/2MG2Qd6rEq',
+    email: 'max@email.com'
+  });
+
+  models.students.create({
+    firstname: 'Edison',
+    lastname: 'Huff',
+    username: 'Edison',
+    // 123
+    password: '$2a$10$cWPLKHIJUX7YRLwJvpMrVeIi0Pxo/IATOPNJ43S2NU/2MG2Qd6rEq',
+    email: 'edison@tinder.com'
+  });
+
   models.classes.create({
     name: 'CS101',
     teacher_id: 1,
@@ -130,6 +137,11 @@ models.sequelize.sync({force: true}).then(function () {
 
   models.classes.create({
     name: 'History',
+    teacher_id: 1
+  });
+
+  models.classes.create({
+    name: 'Postmodern Gender Theory',
     teacher_id: 1
   });
 
@@ -159,11 +171,7 @@ models.sequelize.sync({force: true}).then(function () {
 
   });
 
-  models.classes.create({
-    name: 'Postmodern Gender Theory',
-    teacher_id: 1
-  });
-
+  // Add History lessons
   models.lessons.create({
     name: 'Week 1 - Ancient Egypt',
     class_id: 3,
@@ -189,6 +197,11 @@ models.sequelize.sync({force: true}).then(function () {
   models.students_classes.create({
     class_id: 1,
     student_id: 3
+  });
+
+  models.students_classes.create({
+    class_id: 4,
+    student_id: 5
   });
 
   models.polls.create({

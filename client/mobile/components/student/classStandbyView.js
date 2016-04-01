@@ -118,7 +118,7 @@ class ClassStandbyView extends React.Component {
           {name}
         </NavBar>
         <View style={{backgroundColor: '#424242', justifyContent:'center', alignItems:'center'}}>
-          <Text style={styles.textSizeOne}>Waiting for Teacher</Text>
+          <Text style={styles.textSizeOne}>Connected</Text>
         </View>
         <View style={{flex:1, justifyContent: 'center', flexDirection: 'column', backgroundColor: '#424242'}}>
           <View>

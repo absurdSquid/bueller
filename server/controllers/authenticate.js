@@ -1,5 +1,5 @@
 var models = require('../models');
-var sequelize = require('../db/sequelize-connection');
+var sequelize = require('./../models/index').sequelize;
 var bcrypt = require('bcrypt');
 var session = require('express-session');
 var utils = require('../utils/utils');

@@ -20,7 +20,9 @@ class ThumbRoll extends React.Component {
     this.circleCenter = {};
 
     this.state = {
-      value: 0,
+      value: 0.004,
+      fullLoop: false,
+      emptyLoop: false
     };
   }
 
@@ -78,22 +80,28 @@ class ThumbRoll extends React.Component {
             fullLoop: false
           });
         }
+        if(percent < 0.01) {
+          this.setState({
+            emptyLoop: true
+          });
+        }
+        if(percent > 0.01 && percent < 0.90) {
+          this.setState({
+            emptyLoop: false
+          });
+        }
         if(this.state.fullLoop) {
           percent = 1;
+        }
+        if(this.state.emptyLoop) {
+          percent = 0.004;
         }
         this.setState({
           value: percent
         });
         this.props.onUpdate(Math.floor(percent * 100));
       },
-      onPanResponderRelease: (evt, gestureState) => {
-        // The user has released all touches while this view is the
-        // responder. This typically means a gesture has succeeded
-      },
-      onPanResponderTerminate: (evt, gestureState) => {
-        // Another component has become the responder, so this gesture
-        // should be cancelled
-      },
+      
       onShouldBlockNativeResponder: (evt, gestureState) => {
         // Returns whether this component should block native components from becoming the JS
         // responder. Returns true by default. Is currently only supported on android.

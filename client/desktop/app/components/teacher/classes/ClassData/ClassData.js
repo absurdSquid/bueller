@@ -394,7 +394,8 @@ const Lessons = (props) => {
           <h5 className='sectionHeading' >Add Lesson</h5>
           <div>
             <form onSubmit={props.addLesson}>
-              <input placeholder='Lesson Name' style={{maxWidth: '200px'}} type='text' value={props.newLessonName} onChange={(event) => {
+              <input placeholder='Lesson Name' style={{maxWidth: '200px'}} type='text' 
+              maxLength={24} value={props.newLessonName} onChange={(event) => {
                 props.changeNewLessonName(event.target.value);
               }} />
                 <DatePicker minDate={moment()} selected={props.newLessonDate} onChange={(date) => {

@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#fafafa',
   },
   axisContainer: {
     marginTop:10, 
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   barWhite: {
     width:40, 
-    backgroundColor:'white', 
+    backgroundColor:'#fafafa', 
   },
   barColor: {
     width:40, 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   labelContainer: {
     
-  }
+  },
   labelText: {
 
   }

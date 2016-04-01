@@ -11,6 +11,7 @@ services:
     links:
       - postgres
     ports:
-      - "3000:3000"
+      - "80:80"
     environment: 
       NODE_ENV: "production"
+      PORT: "80"

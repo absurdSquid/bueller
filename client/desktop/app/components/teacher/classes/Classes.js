@@ -44,7 +44,9 @@ class Classes extends React.Component {
               <h5 className='sectionHeading' style={{minWidth: '200px'}}>Create Class</h5>
               <div>
                 <form onSubmit={this.addClass.bind(this)}>
-                  <input placeholder='Class Name' className='newClassForm' type='text' value={this.state.newClassName} onChange={(event) => {
+                  <input placeholder='Class Name' className='newClassForm' 
+                  type='text' value={this.state.newClassName} maxLength={24}
+                  onChange={(event) => {
                     this.setState({
                       newClassName: event.target.value
                     });

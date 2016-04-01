@@ -23,6 +23,7 @@ var {
   Switch,
   Dimensions,
   StatusBar,
+  ScrollView
 } = React;
 
 class Login extends React.Component {
@@ -238,6 +239,7 @@ class Login extends React.Component {
         <StatusBar
           barStyle='default'
         />
+        <ScrollView>
         <View style={styles.loginContainer}>
 
           <View style={styles.headerContainer}>
@@ -313,6 +315,7 @@ class Login extends React.Component {
           </View>
 
         </View>
+        </ScrollView>
 
         <StudentQCModal visible={this.state.modalVisible && this.state.accountType=='student'} 
           onEnter={this.handleStudentModalSubmit.bind(this)} onCancel={this.handleModalCancel.bind(this)}

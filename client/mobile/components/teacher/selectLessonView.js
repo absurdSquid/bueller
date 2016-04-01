@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     flexDirection: 'column',  
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fafafa',
   },
   pageText: {
     fontSize: 20

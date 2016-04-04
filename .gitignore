@@ -1,6 +1,5 @@
 node_modules/
 
-server/db/config.json
 client/desktop/dist/
 
 *.log

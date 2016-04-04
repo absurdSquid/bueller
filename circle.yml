@@ -1,4 +1,6 @@
 machine:
+  services:
+    - postgresql
   node:
     version: 4.0.0
   post:

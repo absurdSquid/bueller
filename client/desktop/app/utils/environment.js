@@ -5,4 +5,4 @@ var environments = {
   production: {server:'http://45.55.204.109', port:80}
 }
 
-module.exports = environments.devLocal;
+module.exports = environments.production;

@@ -1,6 +1,10 @@
 # Thumbroll
 ![super agent](/media/logo.png)
 
+[![Circle CI](https://circleci.com/gh/absurdSquid/thumbroll/tree/master.svg?style=svg)](https://circleci.com/gh/absurdSquid/thumbroll/tree/master)
+[![Circle CI](https://circleci.com/gh/absurdSquid/thumbroll/tree/develop.svg?style=svg)](https://circleci.com/gh/absurdSquid/thumbroll/tree/develop)
+
+
 Thumbroll is a teaching assisstant designed to provide real-time two directional feedback between the lecturer and students via a user-friendly iPhone app. With the press of a button, lecturers can send a variety of polls and feedback requests directly to students. Create or join a 'Quick Class' without logging in, or use the partner desktop app to manage classes and lessons, and track student comprehension easily over time.
 
 ## Requirements

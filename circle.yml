@@ -3,9 +3,7 @@ machine:
     - docker
   node:
     version: 4.0.0
-  test:
-    post:
-      - docker-compose up -d
   post:
     - npm install -g npm@3.x.x
     - npm install -g chai-http
+    - docker-compose up -d

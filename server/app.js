@@ -467,3 +467,5 @@ models.sequelize.sync({force: true}).then(function () {
     poll_id: 6,
   }); 
 });
+
+module.exports = app

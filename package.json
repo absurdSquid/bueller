@@ -18,6 +18,7 @@
     "bcrypt": "^0.8.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
+    "chai-http": "^2.0.1",
     "cookie-parser": "^1.4.1",
     "cookie-session": "^2.0.0-alpha.1",
     "css-loader": "^0.23.1",
@@ -47,18 +48,18 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "babel-core": "^6.7.2",
     "babel-eslint": "^5.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^4.1.0",
     "eslint-plugin-react-native": "^1.0.0",
     "grunt-nodemon": "^0.4.1",
+    "html-webpack-plugin": "^2.10.0",
     "mocha": "^2.4.5",
     "should": "^8.2.2",
-    "supertest": "^1.2.0",
-    "babel-core": "^6.7.2",
-    "babel-loader": "^6.2.4",
-    "babel-preset-react": "^6.5.0",
-    "html-webpack-plugin": "^2.10.0"
+    "supertest": "^1.2.0"
   }
 }

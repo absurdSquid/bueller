@@ -222,6 +222,6 @@ Hand by Maico Amorim from the Noun Project
 
 Help by Pham Thi Dieu Linh from the Noun Project
 
-Thumbs Up by Pham Yaroslav Samoilov from the Noun Project
+Thumbs Up by Yaroslav Samoilov from the Noun Project
 
 Drum Top by Artem Kovyazin from the Noun Project

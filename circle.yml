@@ -1,9 +1,8 @@
 machine:
   services:
-    - docker
+    - postgres
   node:
     version: 4.0.0
   post:
     - npm install -g npm@3.x.x
     - npm install -g chai-http
-    - docker-compose up -d
